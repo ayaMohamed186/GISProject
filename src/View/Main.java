@@ -374,7 +374,7 @@ public class Main {
 			}
 		});
 		
-		JButton btnCancel = new JButton("Cancel\r\n");
+		JButton btnCancel = new JButton("Discard changes\r\n");
 		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
