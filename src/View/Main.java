@@ -400,7 +400,7 @@ public class Main {
 				}
 			}
 		});
-		btnCancel.setBounds(937, 522, 124, 29);
+		btnCancel.setBounds(937, 522, 159, 29);
 		frame.getContentPane().add(btnCancel);
 
 		JLabel lblNewLabel_2 = new JLabel("New invoice Number\r\n");
