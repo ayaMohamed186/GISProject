@@ -18,8 +18,8 @@ public class FileOperations {
 
 
 
-   public static String invoiceHeaderDataPath = "E:\\InvoiceHeader.csv";
-    public static String invoiceLineDataPath = "E:\\InvoiceLines.csv";
+   public static String invoiceHeaderDataPath ;
+    public static String invoiceLineDataPath ;
 
 
 
@@ -43,10 +43,10 @@ public class FileOperations {
             while ((row = invoiceHeaderCsvReader.readLine()) != null && !row.isEmpty()) {
                 BufferedReader invoiceLineCsvReader = new BufferedReader(new FileReader(invoiceLineDataPath));
                 int invoiceLineCounter = 1;
-                if (invoiceHeadeCounter == 1) {
+                /*if (invoiceHeadeCounter == 1) {
                     invoiceHeadeCounter++;
                     continue;
-                }
+                }*/
                 invoice = new InvoiceHeader();
                 String[] data = row.split(",");
                 invoice.invoiceNum = Integer.parseInt(data[0]);
@@ -57,10 +57,10 @@ public class FileOperations {
 
                invoice.invoiceLinesList = new ArrayList<InvoiceLine>();
                 while ((row = invoiceLineCsvReader.readLine()) != null) {
-                    if (invoiceLineCounter == 1) {
+                    /*if (invoiceLineCounter == 1) {
                         invoiceLineCounter++;
                         continue;
-                    }
+                    }*/
                     String[] lineData = row.split(",");
                     if (invoice.invoiceNum == Integer.parseInt(lineData[0])) {
                         lines = new InvoiceLine();
