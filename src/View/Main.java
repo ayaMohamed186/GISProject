@@ -127,6 +127,10 @@ public class Main {
 		frame.getContentPane().add(btnNewButton);
 
 		JButton btnDeleteInvoice = new JButton("Delete Invoice\r\n");
+		btnDeleteInvoice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnDeleteInvoice.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -373,35 +377,6 @@ public class Main {
 				}
 			}
 		});
-		
-		JButton btnCancel = new JButton("Discard changes\r\n");
-		btnCancel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				DefaultTableModel tableModel = (DefaultTableModel) tableInvoiceLine.getModel();
-				int rowsCount = tableModel.getRowCount();
-				for (int i = rowsCount - 1; i >= 0; i--) {
-					tableModel.removeRow(i);
-				}
-				// table1RowIndex = table_1.getSelectedRow();
-				InvoiceHeader selectecdInvoiceHeader = invoiceHeaderList.get(table1RowIndex);
-
-				itemTableModel = new DefaultTableModel(colItem, 0);
-				// display data of invoice in labels
-				labelOfInvoiceNumber.setText(String.valueOf(selectecdInvoiceHeader.invoiceNum));
-				textofDate.setText(selectecdInvoiceHeader.invoiceDate);
-				textOfCustomerName.setText(selectecdInvoiceHeader.CustomerName);
-				labelOfInvoiceTotal.setText(String.valueOf(selectecdInvoiceHeader.invoiceTotalPrice));
-
-				for (InvoiceLine invoice : selectecdInvoiceHeader.invoiceLinesList) {
-					Object[] row = { selectecdInvoiceHeader.invoiceNum, invoice.itemName, invoice.itemPrice,
-							invoice.Count, (invoice.itemPrice * invoice.Count) };
-					tableModel.addRow(row);
-				}
-			}
-		});
-		btnCancel.setBounds(937, 522, 159, 29);
-		frame.getContentPane().add(btnCancel);
 
 		JLabel lblNewLabel_2 = new JLabel("New invoice Number\r\n");
 		lblNewLabel_2.setBounds(53, 386, 108, 19);
@@ -461,6 +436,41 @@ public class Main {
 		newInvoiceCustomerName.setColumns(10);
 		newInvoiceCustomerName.setBounds(153, 461, 124, 19);
 		frame.getContentPane().add(newInvoiceCustomerName);
+		
+		JButton btnDeleteInvoice_1 = new JButton("Delete Invoice\r\n");
+		btnDeleteInvoice_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (table_1.getSelectedRow() != -1 && tableInvoiceLine.getSelectedRow()!= -1) {
+					InvoiceHeader selectecdInvoiceHeader = invoiceHeaderList.get(table1RowIndex);
+					int invoiceLineIndex=tableInvoiceLine.getSelectedRow();
+					selectecdInvoiceHeader.invoiceLinesList.remove(invoiceLineIndex);
+
+					DefaultTableModel headerTableModel = (DefaultTableModel) table_1.getModel();
+					int rowsHeadrerCount = headerTableModel.getRowCount();
+					for (int i = rowsHeadrerCount - 1; i >= 0; i--) {
+						headerTableModel.removeRow(i);
+					}
+					for (InvoiceHeader invoice : invoiceHeaderList) {
+						Object[] row = { invoice.invoiceNum, invoice.invoiceDate, invoice.CustomerName,
+								invoice.invoiceTotalPrice };
+						headerTableModel.addRow(row);
+					}
+					DefaultTableModel tableModel = (DefaultTableModel) tableInvoiceLine.getModel();
+					int rowsLineCount = tableModel.getRowCount();
+					for (int i = rowsLineCount - 1; i >= 0; i--) {
+						tableModel.removeRow(i);
+					}
+					for (InvoiceLine invoice : selectecdInvoiceHeader.invoiceLinesList) {
+						Object[] row = { selectecdInvoiceHeader.invoiceNum, invoice.itemName, invoice.itemPrice,
+								invoice.Count, (invoice.itemPrice * invoice.Count) };
+						tableModel.addRow(row);
+					}
+				}
+			}
+		});
+		btnDeleteInvoice_1.setBounds(959, 517, 124, 38);
+		frame.getContentPane().add(btnDeleteInvoice_1);
 
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
