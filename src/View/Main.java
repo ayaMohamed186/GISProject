@@ -121,7 +121,7 @@ public class Main {
 			}
 		});
 		
-		JButton btnAdd = new JButton("Add");
+		JButton btnAdd = new JButton("Create Item \r\n");
 		btnAdd.enable(false);
 		btnNewButton.setBounds(76, 517, 124, 38);
 		frame.getContentPane().add(btnNewButton);
@@ -379,21 +379,21 @@ public class Main {
 		});
 
 		JLabel lblNewLabel_2 = new JLabel("New invoice Number\r\n");
-		lblNewLabel_2.setBounds(53, 386, 108, 19);
+		lblNewLabel_2.setBounds(53, 427, 108, 19);
 		frame.getContentPane().add(lblNewLabel_2);
 
 		JLabel lblNewLabel_2_1 = new JLabel("New invoice Date\r\n");
-		lblNewLabel_2_1.setBounds(53, 427, 108, 19);
+		lblNewLabel_2_1.setBounds(53, 461, 108, 19);
 		frame.getContentPane().add(lblNewLabel_2_1);
 
 		newInvoiceNo = new JTextField();
 		newInvoiceNo.setColumns(10);
-		newInvoiceNo.setBounds(153, 386, 124, 19);
+		newInvoiceNo.setBounds(153, 427, 124, 19);
 		frame.getContentPane().add(newInvoiceNo);
 
 		newInvoiceDate = new JTextField();
 		newInvoiceDate.setColumns(10);
-		newInvoiceDate.setBounds(153, 427, 124, 19);
+		newInvoiceDate.setBounds(153, 461, 124, 19);
 		frame.getContentPane().add(newInvoiceDate);
 
 		newItemName = new JTextField();
@@ -429,15 +429,15 @@ public class Main {
 		frame.getContentPane().add(lblNewLabel_2_2_2);
 		
 		JLabel lblNewLabel_2_3 = new JLabel("Customer Name");
-		lblNewLabel_2_3.setBounds(53, 461, 108, 19);
+		lblNewLabel_2_3.setBounds(53, 490, 108, 19);
 		frame.getContentPane().add(lblNewLabel_2_3);
 		
 		newInvoiceCustomerName = new JTextField();
 		newInvoiceCustomerName.setColumns(10);
-		newInvoiceCustomerName.setBounds(153, 461, 124, 19);
+		newInvoiceCustomerName.setBounds(153, 488, 124, 19);
 		frame.getContentPane().add(newInvoiceCustomerName);
 		
-		JButton btnDeleteInvoice_1 = new JButton("Delete Invoice\r\n");
+		JButton btnDeleteInvoice_1 = new JButton("Delete Item\r\n");
 		btnDeleteInvoice_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
