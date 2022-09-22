@@ -253,7 +253,7 @@ public class Main {
 
 		scrollPane_1.setViewportView(tableInvoiceLine);
 
-		JButton btnSave = new JButton("Save\r\n");
+		JButton btnSave = new JButton("Save Changes\r\n");
 		btnSave.setBounds(631, 522, 124, 29);
 		frame.getContentPane().add(btnSave);
 
