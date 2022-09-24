@@ -101,10 +101,12 @@ public class FileOperations {
    public static void SaveInvoices(ArrayList<InvoiceHeader> invoicesList)
     {
         try {
-            FileWriter invoiceHeaderCsvWriter = new FileWriter("invoiceHeaderDataPath");
-            FileWriter invoiceLinerCsvWriter = new FileWriter("invoiceLineDataPath");
+        	String newInvoiceHeaderDataPath=invoiceHeaderDataPath.split(".csv")[0]+" new.csv";
+        	String newInvoiceLineDataPath=invoiceLineDataPath.split(".csv")[0]+" new.csv";
+            FileWriter invoiceHeaderCsvWriter = new FileWriter(newInvoiceHeaderDataPath);
+            FileWriter invoiceLinerCsvWriter = new FileWriter(newInvoiceLineDataPath);
             
-            invoiceHeaderCsvWriter.append("invoiceNum");
+         /*   invoiceHeaderCsvWriter.append("invoiceNum");
             invoiceHeaderCsvWriter.append(",");
             invoiceHeaderCsvWriter.append("invoiceDate");
             invoiceHeaderCsvWriter.append(",");
@@ -118,7 +120,7 @@ public class FileOperations {
             invoiceLinerCsvWriter.append("Count");
             invoiceLinerCsvWriter.append(",");
             invoiceLinerCsvWriter.append("itemPrice");
-            invoiceLinerCsvWriter.append("\n");
+            invoiceLinerCsvWriter.append("\n");*/
             
             for (InvoiceHeader invoiceHeader : invoicesList) {
                 invoiceHeaderCsvWriter.append(String.valueOf(invoiceHeader.invoiceNum));
@@ -145,6 +147,7 @@ public class FileOperations {
             invoiceHeaderCsvWriter.close();
             } catch (Exception e) {
             // TODO: handle exception
+            	int x=0;
         }
         
     }

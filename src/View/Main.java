@@ -41,6 +41,7 @@ public class Main {
 	private JFrame frame;
 	private JTable table_1;
 	private final Action action = new SwingAction();
+	private final Action actionSave = new SwingAction_1();
 	DefaultTableModel tableModel;
 	DefaultTableModel itemTableModel;
 
@@ -483,12 +484,7 @@ public class Main {
 		mnNewMenu.add(mntmNewMenuItem);
 
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Save File \r\n");
-		mntmNewMenuItem_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				FileOperations.SaveInvoices(invoiceHeaderList);
-			}
-		});
+		mntmNewMenuItem_1.setAction(actionSave);
 		mnNewMenu.add(mntmNewMenuItem_1);
 
 	}
@@ -541,11 +537,12 @@ public class Main {
 
 	private class SwingAction_1 extends AbstractAction {
 		public SwingAction_1() {
-			putValue(NAME, "SwingAction_1");
+			putValue(NAME, "Save to File");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 
 		public void actionPerformed(ActionEvent e) {
+			FileOperations.SaveInvoices(invoiceHeaderList);
 
 		}
 	}
